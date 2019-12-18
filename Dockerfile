@@ -1,6 +1,7 @@
 FROM ubuntu:16.04
-MAINTAINER igf[at]imperial.ac.uk
 LABEL maintainer="imperialgenomicsfacility"
+LABEL version="0.0.1"
+LABEL description="Base docker image for IGF notebooks"
 
 ENV NB_USER vmuser
 ENV NB_GROUP vmuser
