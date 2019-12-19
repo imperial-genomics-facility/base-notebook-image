@@ -19,6 +19,11 @@ RUN adduser --disabled-password \
       locales \
       wget \
       unzip \
+      git \
+      tar \
+      zip \
+      gzip \
+      bzip2 \
       cmake \
       g++ \
       libxml2-dev \
