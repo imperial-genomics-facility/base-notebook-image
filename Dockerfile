@@ -60,6 +60,7 @@ RUN  mkdir -p ${TMPDIR} && \
      bash /home/$NB_USER/Miniconda3-latest-Linux-x86_64.sh -b
 ENV PATH $PATH:/home/$NB_USER/miniconda3/bin/
 RUN conda config --set safety_checks disabled && \
+    conda update -n base -c defaults conda && \
     conda env create -q -n notebook-env --file /home/$NB_USER/environment.yml && \
     echo ". /home/$NB_USER/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "source activate notebook-env" >> ~/.bashrc && \
