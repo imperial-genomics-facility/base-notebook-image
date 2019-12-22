@@ -4,6 +4,7 @@ dependencies:
   - python=3.6.9
   - pandas=0.25.3
   - cython
+  - graphviz
   - pip
   - pip:
     - jupyter
