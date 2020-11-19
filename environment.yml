@@ -16,3 +16,4 @@ dependencies:
     - numpy
     - pandas
     - jupyter_server_proxy
+    - rpy2
