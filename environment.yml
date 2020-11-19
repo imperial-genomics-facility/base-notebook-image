@@ -3,8 +3,8 @@ channels:
   - default
 dependencies:
   - python=3.6.9
-  - pandas=0.25.3
   - cython
+  - r-base
   - pip
   - pip:
     - jupyter
@@ -14,3 +14,5 @@ dependencies:
     - seaborn
     - sklearn
     - numpy
+    - pandas
+    - jupyter_server_proxy
