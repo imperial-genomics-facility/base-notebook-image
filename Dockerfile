@@ -64,7 +64,7 @@ RUN conda config --set safety_checks disabled && \
     conda env create -q -n notebook-env --file /home/$NB_USER/environment.yml && \
     echo ". /home/$NB_USER/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "source activate notebook-env" >> ~/.bashrc && \
-    conda activate notebook-env && \
+    source  ~/.bashrc && \
     jupyter serverextension enable --sys-prefix jupyter_server_proxy && \
     conda clean -a -y && \
     rm -rf /home/$NB_USER/.cache && \
