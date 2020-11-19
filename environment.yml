@@ -6,11 +6,11 @@ dependencies:
   - conda-forge::cython=0.29.21
   - conda-forge::r-base=4.0.3
   - conda-forge::r-esquisse=0.3.1
+  - conda-forge::python-graphviz=0.8.4
   - pip
   - pip:
     - jupyter==1.0.0
     - jupyterlab==2.2.9
-    - python-graphviz==0.15
     - matplotlib==3.3.3
     - seaborn==0.11.0
     - scikit-learn==0.23.2
