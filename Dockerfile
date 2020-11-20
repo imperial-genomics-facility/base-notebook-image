@@ -2,9 +2,9 @@ FROM ubuntu:16.04
 LABEL maintainer="imperialgenomicsfacility"
 LABEL version="0.0.1"
 LABEL description="Base docker image for IGF notebooks"
-
 ENV NB_USER vmuser
 ENV NB_GROUP vmuser
+SHELL ["/bin/bash", "-o", "pipefail", "-e", "-u", "-x", "-c"]
 ENV NB_UID 1000
 USER root
 WORKDIR /
@@ -64,9 +64,6 @@ RUN conda config --set safety_checks disabled && \
     conda env create -q -n notebook-env --file /home/$NB_USER/environment.yml && \
     echo ". /home/$NB_USER/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "source activate notebook-env" >> ~/.bashrc && \
-    . /home/$NB_USER/miniconda3/etc/profile.d/conda.sh && \
-    source activate notebook-env && \
-    jupyter serverextension enable --sys-prefix jupyter_server_proxy && \
     conda clean -a -y && \
     rm -rf /home/$NB_USER/.cache && \
     rm -rf /tmp/* && \
@@ -77,6 +74,7 @@ RUN conda config --set safety_checks disabled && \
     find miniconda3/ -type f -name *.pyc -exec rm -f {} \; && \
     rm -f Miniconda3-latest-Linux-x86_64.sh && \
     echo "c.NotebookApp.password = u'sha1:0e221c95f37a:f9e0f0df2c274287b168eaa378877327fdd39029'" > /home/$NB_USER/.jupyter/jupyter_notebook_config.py
+RUN conda init bash
 EXPOSE 8888
 ENTRYPOINT [ "/usr/local/bin/tini","--","/home/vmuser/entrypoint.sh" ]
 CMD [ "notebook" ]
