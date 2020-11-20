@@ -7,16 +7,6 @@
 # Base docker image for IGF notebooks
 A repository for keeping conda env and docker files for the base notebook container image
 
-## Installed packages
-
-* Python v3.6.9
-* Pandas 0.25.3
-* Numpy
-* Scikit-learn
-* Matplotlib
-* Seaborn
-* Cython
-
 
 Explore this repo in nbviewer: [![nbviewer](https://img.shields.io/badge/launch-nbviewer-coral)](https://nbviewer.jupyter.org/github/imperial-genomics-facility/base-notebook-image/tree/master/)
 
