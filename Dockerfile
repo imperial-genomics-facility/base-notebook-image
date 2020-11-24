@@ -1,10 +1,10 @@
 FROM ubuntu:16.04
 LABEL maintainer="imperialgenomicsfacility"
-LABEL version="0.0.1"
+LABEL version="0.0.4"
 LABEL description="Base docker image for IGF notebooks"
 ENV NB_USER vmuser
 ENV NB_GROUP vmuser
-SHELL ["/bin/bash", "-o", "pipefail", "-e", "-u", "-x", "-c"]
+#SHELL ["/bin/bash", "-o", "pipefail", "-e", "-u", "-x", "-c"]
 ENV NB_UID 1000
 USER root
 WORKDIR /
@@ -59,11 +59,13 @@ RUN  mkdir -p ${TMPDIR} && \
        https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
      bash /home/$NB_USER/Miniconda3-latest-Linux-x86_64.sh -b
 ENV PATH $PATH:/home/$NB_USER/miniconda3/bin/
-RUN conda config --set safety_checks disabled && \
-    conda update -n base -c defaults conda && \
-    conda env create -q -n notebook-env --file /home/$NB_USER/environment.yml && \
+RUN . /home/$NB_USER/miniconda3/etc/profile.d/conda.sh && \
+    conda config --set safety_checks disabled && \
+    conda create -n notebook-env python=3.6.9 && \
     echo ". /home/$NB_USER/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "source activate notebook-env" >> ~/.bashrc && \
+    conda activate notebook-env && \
+    conda env update -q -n notebook-env --file /home/$NB_USER/environment.yml && \
     conda clean -a -y && \
     rm -rf /home/$NB_USER/.cache && \
     rm -rf /tmp/* && \
