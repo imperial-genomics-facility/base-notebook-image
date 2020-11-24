@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 LABEL maintainer="imperialgenomicsfacility"
-LABEL version="0.0.4"
+LABEL version="0.0.5"
 LABEL description="Base docker image for IGF notebooks"
 ENV NB_USER vmuser
 ENV NB_GROUP vmuser
@@ -66,6 +66,7 @@ RUN . /home/$NB_USER/miniconda3/etc/profile.d/conda.sh && \
     echo "source activate notebook-env" >> ~/.bashrc && \
     conda activate notebook-env && \
     conda env update -q -n notebook-env --file /home/$NB_USER/environment.yml && \
+    jupyter serverextension enable --sys-prefix jupyter_server_proxy && \
     conda clean -a -y && \
     rm -rf /home/$NB_USER/.cache && \
     rm -rf /tmp/* && \
