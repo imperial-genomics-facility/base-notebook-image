@@ -5,7 +5,6 @@ dependencies:
   - conda-forge::python=3.6.9
   - conda-forge::cython=0.29.21
   - conda-forge::r-base=4.0.3
-  - conda-forge::r-esquisse=0.3.1
   - conda-forge::r-irkernel
   - conda-forge::python-graphviz=0.8.4
   - pip
