@@ -30,9 +30,12 @@ RUN adduser --disabled-password \
       ca-certificates \
       zlib1g-dev \
       libfftw3-dev \
+      curl \
       build-essential && \
     locale-gen en_US.UTF-8 && \
     dpkg-reconfigure locales && \
+    curl -sL https://deb.nodesource.com/setup_15.x |bash - && \
+    apt-get install --no-install-recommends -y nodejs && \
     apt-get purge -y --auto-remove && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -66,7 +69,9 @@ RUN . /home/$NB_USER/miniconda3/etc/profile.d/conda.sh && \
     echo "source activate notebook-env" >> ~/.bashrc && \
     conda activate notebook-env && \
     conda env update -q -n notebook-env --file /home/$NB_USER/environment.yml && \
+    jupyter lab build && \
     jupyter serverextension enable --sys-prefix jupyter_server_proxy && \
+    jupyter server extension enable elyra && \
     conda clean -a -y && \
     rm -rf /home/$NB_USER/.cache && \
     rm -rf /tmp/* && \
