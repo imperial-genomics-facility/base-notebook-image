@@ -19,4 +19,4 @@ dependencies:
     - jupyter-server==1.2.2
     - jupyter-server-proxy==1.5.0
     - rpy2==3.3.6
-    - elyra==2.0.1
+    - elyra<2.0.0
