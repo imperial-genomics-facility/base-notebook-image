@@ -70,7 +70,7 @@ RUN . /home/$NB_USER/miniconda3/etc/profile.d/conda.sh && \
     echo "source activate notebook-env" >> ~/.bashrc && \
     conda activate notebook-env && \
     conda env update -q -n notebook-env --file /home/$NB_USER/environment.yml && \
-    jupyter lab build && \
+    jupyter lab build --dev-build=False --minimize=False && \
     jupyter serverextension enable --sys-prefix jupyter_server_proxy && \
     jupyter server extension enable elyra && \
     conda clean -a -y && \
