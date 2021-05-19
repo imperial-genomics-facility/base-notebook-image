@@ -1,6 +1,6 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 LABEL maintainer="imperialgenomicsfacility"
-LABEL version="0.0.5"
+LABEL version="0.0.6"
 LABEL description="Base docker image for IGF notebooks"
 ENV NB_USER vmuser
 ENV NB_GROUP vmuser
@@ -55,13 +55,14 @@ RUN chown -R ${NB_UID} /home/$NB_USER && \
      rm -rf /tmp/*
 USER ${NB_USER}
 WORKDIR /home/$NB_USER
-ENV TMPDIR=/home/$NB_USER/.tmp
+ENV TMPDIR=/tmp
 RUN  mkdir -p ${TMPDIR} && \
      wget --quiet --no-check-certificate \
        -O /home/$NB_USER/Miniconda3-latest-Linux-x86_64.sh \
        https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
      bash /home/$NB_USER/Miniconda3-latest-Linux-x86_64.sh -b
-ENV PATH $PATH:/home/$NB_USER/miniconda3/bin/
+ENV PATH=$PATH:/home/$NB_USER/miniconda3/bin/
+ENV MPLCONFIGDIR=/tmp
 RUN . /home/$NB_USER/miniconda3/etc/profile.d/conda.sh && \
     conda config --set safety_checks disabled && \
     conda update -n base -c defaults conda && \

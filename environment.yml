@@ -2,20 +2,20 @@ channels:
   - conda-forge
   - default
 dependencies:
-  - conda-forge::cython=0.29.21
-  - conda-forge::r-base=4.0.3
+  - conda-forge::cython=0.29.23
+  - conda-forge::r-base=4.0.5
   - conda-forge::r-irkernel
   - conda-forge::python-graphviz=0.8.4
   - pip
   - pip:
     - jupyter==1.0.0
-    - jupyterlab==2.2.9
-    - matplotlib==3.3.3
-    - seaborn==0.11.0
-    - scikit-learn==0.23.2
-    - numpy==1.19.4
-    - pandas==1.1.4
-    - jupyter-server==1.2.2
-    - jupyter-server-proxy==1.5.0
-    - rpy2==3.3.6
-    - elyra<2.0.0
+    - jupyterlab==3.0.16
+    - matplotlib==3.4.2
+    - seaborn==0.11.1
+    - scikit-learn==0.24.2
+    - numpy==1.20.3
+    - pandas==1.2.4
+    - jupyter-server==1.7.0
+    - jupyter-server-proxy==3.0.2
+    - rpy2==3.4.4
+    - elyra==2.2.4
