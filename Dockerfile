@@ -77,8 +77,6 @@ RUN . /home/$NB_USER/miniconda3/etc/profile.d/conda.sh && \
     conda clean -a -y && \
     rm -rf /home/$NB_USER/.cache && \
     rm -rf /tmp/* && \
-    rm -rf ${TMPDIR} && \
-    mkdir -p ${TMPDIR} && \
     mkdir -p /home/$NB_USER/.cache && \
     mkdir -p /home/$NB_USER/.jupyter && \
     find miniconda3/ -type f -name *.pyc -exec rm -f {} \; && \
