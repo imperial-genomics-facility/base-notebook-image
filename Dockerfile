@@ -34,7 +34,7 @@ RUN adduser --disabled-password \
       build-essential && \
     locale-gen en_US.UTF-8 && \
     dpkg-reconfigure locales && \
-    curl -sL https://deb.nodesource.com/setup_15.x |bash - && \
+    curl -sL https://deb.nodesource.com/setup_16.x |bash - && \
     apt-get install --no-install-recommends -y nodejs && \
     apt-get purge -y --auto-remove && \
     apt-get clean && \
